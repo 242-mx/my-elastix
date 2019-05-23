@@ -1,0 +1,262 @@
+==========================================================================
+================================Extensions================================
+==========================================================================
+
+Extension               1000
+Type                    Generic IAX2 Device
+Display Name            Abena
+Ring Time               Default
+Call Waiting            Enabled
+IAX2 password           3J*J3#P*
+Dictation Service       Enabled
+Dictation Format        Ogg Vorbis
+Email Address           info@abena.mx
+Language Code           es
+Record Incoming         Never
+Record Outgoing         Never
+Voicemail & Directory   Enabled
+Voicemail Password      1616
+Pager Email Address     info@abena.mx
+Email Attachment        info@abena.mx
+Email Attachment        yes
+Play CID                yes
+Play Envelope           yes
+Delete Voicemail        yes
+VmX Locater             Enabled
+Use When                Unavailable
+Press 0                 Go to Operator
+Press 1                 Follow-Me
+Follow-Me               Enabled
+Initial Ring Time       8
+Ring Strategy           ringallv2
+Ring Time(max 60 sec)   10
+Follow-Me List          0445546946424#
+Announcement            Ring
+Destination if no answer
+Voicemail               <1000> Abena (unavail)
+
+Extension               1001
+Type                    Generic IAX2 Device
+Display Name            Vladimir Nettel
+Ring Time               Default
+Call Waiting            Enabled
+IAX2 password           *#EHJB06
+Dictation Service       Enabled
+Dictation Format        Ogg Vorbis
+Email Address           nettelconsulting@gmail.com
+Language Code           es
+Record Incoming         Never
+Record Outgoing         Never
+Voicemail & Directory   Enabled
+Voicemail Password      9351
+Pager Email Address     nettelconsulting@gmail.com
+Email Attachment        nettelconsulting@gmail.com
+Email Attachment        yes
+Play CID                yes
+Play Envelope           yes
+Delete Voicemail        yes
+VmX Locater             Enabled
+Use When                Unavailable & Standard voicemail prompts
+Press 0                 Go to Operator
+Press 1                 Follow-Me
+Follow-Me               Enabled
+Initial Ring Time       8
+Ring Strategy           ringallv2
+Ring Time(max 60 sec)   20
+Follow-Me List          0445531295842#
+Announcement            Ring
+Destination if no answer
+Voicemail               <1001> Vladimir Nettel (unavail)
+
+Extension               1002
+Type                    Generic IAX2 Device
+Display Name            Mario Franco
+Ring Time               Default
+Call Waiting            Enabled
+IAX2 password           DA3D0SHU
+Dictation Service       Enabled
+Dictation Format        Ogg Vorbis
+Email Address           mariofrancob@me.com
+Language Code           es
+Record Incoming         Never
+Record Outgoing         Never
+Voicemail & Directory   Enabled
+Voicemail Password      1216
+Pager Email Address     mariofrancob@me.com
+Email Attachment        mariofrancob@me.com
+Email Attachment        yes
+Play CID                yes
+Play Envelope           yes
+Delete Voicemail        yes
+VmX Locater             Disabled
+Follow-Me               Enabled
+Initial Ring Time       8
+Ring Strategy           ringallv2
+Ring Time(max 60 sec)   10
+Follow-Me List          0445554153393#
+Announcement            Ring
+Destination if no answer
+Voicemail               <1002> Mario Franco (unavail)
+
+Extension               1003
+Type                    Generic IAX2 Device
+Display Name            Administracion
+Ring Time               Default
+Call Waiting            Enabled
+IAX2 password           MOH8D9ED
+Dictation Service       Enabled
+Dictation Format        Ogg Vorbis
+Email Address           admin@abena.mx
+Language Code           es
+Record Incoming         Never
+Record Outgoing         Never
+Voicemail & Directory   Enabled
+Voicemail Password      2917
+Pager Email Address     admin@abena.mx
+Email Attachment        admin@abena.mx
+Email Attachment        yes
+Play CID                yes
+Play Envelope           yes
+Delete Voicemail        yes
+VmX Locater             Disabled
+Follow-Me               Disabled
+
+==========================================================================
+===============================Conferences================================
+==========================================================================
+
+Conference Number     1010
+Conference Name       Conferencias de Abena
+User PIN              1277
+Admin PIN             9351
+Join Message          conferences-room
+Leader Wait           No
+Talker Optimization   Yes
+Talker Detection      Yes
+Quiet Mode            No
+User Count            No
+User join/leave       No
+Music on Hold         Yes
+Music on Hold Class   default
+Allow Menu            No
+Record Conference     No
+Maximum Participants  No limit
+
+===================================================================
+================================IVR================================
+===================================================================
+
+Change Name         abena-ivr
+Announcement        abena-ivr
+Timeout             10
+VM Return to IVR    Checked
+Enable Direct Dial  Checked
+Loop Before t-dest  Checked
+Timeout Message     ivr-invalid-option
+Loop Before i-dest  Checked
+Invalid Message     ivr-invalid-option
+Repeat Loops        3
+Options
+0     Extensions   <1000> Abena
+1000  Extensions   <1000> Abena
+1001  Extensions   <1001> Vladimir Nettel
+1002  Extensions   <1002> Mario Franco
+1003  Extensions   <1003> Administrativo
+1010  Conferences  <1010> Conferencias de Abena
+
+======================================================================
+================================Trunks================================
+======================================================================
+
+Type of Trunk     SIP
+Trunk Name:       abena_55_1328_0690
+Outbound Caller   "Abena Mexico" <5513280690>
+CID Options       Allow Any CID
+Maximum Channels  10 Channels
+Dialed Number Manipulation Rules
+prepend + prefix + match pattern / caller id
+(    )  +        + [             /         ]
+Outgoing Settings
+Trunk Name        5513280690
+PEER Details
+username=5513280690
+type=friend
+secret=fQ2FNj6o4d2S
+host=proxy1.convector.com.mx
+fromuser=5513280690
+context=from-trunk
+insecure=invite
+allow=alaw
+fromdomain=proxy1.convector.com.mx
+trustrpid=yes
+sendrpid=yes
+directmedia=no
+port=49750
+qualify=yes
+Incoming Settings
+USER Context
+USER Details
+Registration
+Register String   5513280690:fQ2FNj6o4d2S@proxy1.convector.com.mx:49750/5513280690
+
+==============================================================================
+================================InBound Routes================================
+==============================================================================
+
+Description         abena-in
+DID Number          
+Detect Faxes	    yes
+Fax Detection Type  Dahdi
+Fax Detection Time  4
+Fax Destination     Extensions      <1000> Abena
+Language            es
+Set Destination     IVR abena-ivr
+
+===============================================================================
+================================OutBound Routes================================
+===============================================================================
+
+Route Name        abena_5513280690
+Route CID         5513280690
+Music On Hold     Ring
+Dial Patterns that will use this Route
+prepend + prefix + match pattern / caller id
+(5255)  +        + [XXXXXXXX     / 1000]
+(52)    + +52    + [XXXXXXXXXX   / 1000]
+(521)   + +521   + [XXXXXXXXXX   / 1000]
+(52)    + 01     + [XXXXXXXXXX   / 1000]
+(521)   + 044    + [XXXXXXXXXX   / 1000]
+(521)   + 045    + [XXXXXXXXXX   / 1000]
+(52)    + 52     + [XXXXXXXXXX   / 1000]
+(521)   + 521    + [XXXXXXXXXX   / 1000]
+(5255)  + 55     + [XXXXXXXX     / 1000]
+(5255)  +        + [XXXXXXXX     / 1001]
+(52)    + +52    + [XXXXXXXXXX   / 1001]
+(521)   + +521   + [XXXXXXXXXX   / 1001]
+(52)    + 01     + [XXXXXXXXXX   / 1001]
+(521)   + 044    + [XXXXXXXXXX   / 1001]
+(521)   + 045    + [XXXXXXXXXX   / 1001]
+(52)    + 52     + [XXXXXXXXXX   / 1001]
+(521)   + 521    + [XXXXXXXXXX   / 1001]
+(5255)  + 55     + [XXXXXXXX     / 1001]
+(5255)  +        + [XXXXXXXX     / 1002]
+(52)    + +52    + [XXXXXXXXXX   / 1002]
+(521)   + +521   + [XXXXXXXXXX   / 1002]
+(52)    + 01     + [XXXXXXXXXX   / 1002]
+(521)   + 044    + [XXXXXXXXXX   / 1002]
+(521)   + 045    + [XXXXXXXXXX   / 1002]
+(52)    + 52     + [XXXXXXXXXX   / 1002]
+(521)   + 521    + [XXXXXXXXXX   / 1002]
+(5255)  + 55     + [XXXXXXXX     / 1002]
+(5255)  +        + [XXXXXXXX     / 1003]
+(52)    + +52    + [XXXXXXXXXX   / 1003]
+(521)   + +521   + [XXXXXXXXXX   / 1003]
+(52)    + 01     + [XXXXXXXXXX   / 1003]
+(521)   + 044    + [XXXXXXXXXX   / 1003]
+(521)   + 045    + [XXXXXXXXXX   / 1003]
+(52)    + 52     + [XXXXXXXXXX   / 1003]
+(521)   + 521    + [XXXXXXXXXX   / 1003]
+(5255)  + 55     + [XXXXXXXX     / 1003]
+Trunk Sequence    abena_5513280690
+
+===============================End of File===============================
